@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+
+        <record id="view_sa_department_list" model="ir.ui.view">
+            <field name="name">sa.department.list</field>
+            <field name="model">sa.department</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="total_employees"/>
+                    <field name="saudi_count"/>
+                    <field name="saudization_pct" string="Saudization %" digits="[10,1]"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sa_department_form" model="ir.ui.view">
+            <field name="name">sa.department.form</field>
+            <field name="model">sa.department</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="saudization_pct" string="Saudization %" readonly="1"/>
+                            <field name="total_employees" readonly="1"/>
+                            <field name="saudi_count" readonly="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Employees">
+                                <field name="employee_ids">
+                                    <tree>
+                                        <field name="employee_number"/>
+                                        <field name="name"/>
+                                        <field name="job_title"/>
+                                        <field name="nationality_type"/>
+                                        <field name="status"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sa_department" model="ir.actions.act_window">
+            <field name="name">Departments</field>
+            <field name="res_model">sa.department</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

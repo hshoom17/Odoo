@@ -1,0 +1,78 @@
+<odoo>
+    <data>
+
+        <record id="view_sa_employee_list" model="ir.ui.view">
+            <field name="name">sa.employee.list</field>
+            <field name="model">sa.employee</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="iqama_status == 'expired'"
+                      decoration-warning="iqama_status == 'expiring'">
+                    <field name="employee_number"/>
+                    <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="job_title"/>
+                    <field name="nationality_type"/>
+                    <field name="iqama_expiry"/>
+                    <field name="iqama_status"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sa_employee_form" model="ir.ui.view">
+            <field name="name">sa.employee.form</field>
+            <field name="model">sa.employee</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_activate" string="Activate"
+                                type="object" class="btn-success"
+                                invisible="status == 'active'"/>
+                        <button name="action_suspend" string="Suspend"
+                                type="object" class="btn-warning"
+                                invisible="status == 'inactive'"/>
+                        <field name="status" widget="statusbar"
+                               statusbar_visible="active,inactive"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" placeholder="Employee Name"/></h1>
+                            <h2><field name="employee_number" readonly="1"/></h2>
+                        </div>
+                        <group>
+                            <group string="Personal Info">
+                                <field name="nationality_type"/>
+                                <field name="national_id"  invisible="nationality_type != 'saudi'"/>
+                                <field name="iqama_number" invisible="nationality_type != 'expat'"/>
+                                <field name="iqama_expiry" invisible="nationality_type != 'expat'"/>
+                                <field name="iqama_status" invisible="nationality_type != 'expat'" readonly="1"/>
+                            </group>
+                            <group string="Job Info">
+                                <field name="department_id"/>
+                                <field name="job_title"/>
+                                <field name="hire_date"/>
+                                <field name="salary"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_deactivate_expired_iqama" model="ir.actions.server">
+            <field name="name">Deactivate Expired Iqama</field>
+            <field name="model_id" ref="model_sa_employee"/>
+            <field name="binding_model_id" ref="model_sa_employee"/>
+            <field name="binding_type">action</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_deactivate_expired_iqama()</field>
+        </record>
+
+        <record id="action_sa_employee" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="res_model">sa.employee</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

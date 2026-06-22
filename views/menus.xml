@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+
+        <menuitem id="menu_sa_hr_root"
+                  name="HR"
+                  sequence="10"/>
+
+        <menuitem id="menu_sa_hr_employees"
+                  name="Employees"
+                  parent="menu_sa_hr_root"
+                  action="action_sa_employee"
+                  sequence="1"/>
+
+        <menuitem id="menu_sa_hr_departments"
+                  name="Departments"
+                  parent="menu_sa_hr_root"
+                  action="action_sa_department"
+                  sequence="2"/>
+
+    </data>
+</odoo>
