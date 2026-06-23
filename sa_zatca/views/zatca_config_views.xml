@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+
+        <record id="view_zatca_config_form" model="ir.ui.view">
+            <field name="name">zatca.config.form</field>
+            <field name="model">zatca.config</field>
+            <field name="arch" type="xml">
+                <form string="ZATCA Settings">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>ZATCA e-Invoice Settings</h1>
+                        </div>
+
+                        <group string="Environment">
+                            <field name="environment"/>
+                            <field name="onboard_status" readonly="1"/>
+                        </group>
+
+                        <group string="Company Info">
+                            <field name="company_name"/>
+                            <field name="seller_vat"/>
+                            <field name="seller_cr"/>
+                            <field name="city"/>
+                        </group>
+
+                        <group string="Step 1 — Generate CSR">
+                            <div class="alert alert-info" role="alert">
+                                Click <b>Generate CSR</b> to create your ECDSA key pair and certificate signing request.
+                            </div>
+                            <button name="action_generate_csr" string="Generate CSR"
+                                    type="object" class="btn-primary"/>
+                            <field name="csr" readonly="1" invisible="not csr"/>
+                        </group>
+
+                        <group string="Step 2 — Onboard with ZATCA">
+                            <div class="alert alert-info" role="alert">
+                                Go to <b>fatoora.zatca.gov.sa</b> → Sandbox → New Device → copy the OTP, paste it below, then click <b>Onboard</b>.
+                            </div>
+                            <field name="otp" invisible="onboard_status == 'compliant'"/>
+                            <button name="action_onboard" string="Onboard with ZATCA"
+                                    type="object" class="btn-success"
+                                    invisible="onboard_status == 'compliant'"/>
+                        </group>
+
+                        <group string="Credentials (received from ZATCA)"
+                               invisible="onboard_status != 'compliant'">
+                            <field name="csid" readonly="1"/>
+                            <field name="csid_secret" readonly="1" password="True"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_zatca_config" model="ir.actions.act_window">
+            <field name="name">ZATCA Settings</field>
+            <field name="res_model">zatca.config</field>
+            <field name="view_mode">form</field>
+            <field name="target">current</field>
+        </record>
+
+    </data>
+</odoo>

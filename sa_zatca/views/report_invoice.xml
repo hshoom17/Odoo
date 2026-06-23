@@ -1,0 +1,138 @@
+<odoo>
+    <data>
+
+        <record id="action_report_sa_invoice" model="ir.actions.report">
+            <field name="name">ZATCA Invoice</field>
+            <field name="model">sa.invoice</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sa_zatca.report_sa_invoice_document</field>
+            <field name="report_file">sa_zatca.report_sa_invoice_document</field>
+            <field name="binding_model_id" ref="model_sa_invoice"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="report_sa_invoice_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+
+                            <!-- Header -->
+                            <div class="row mb-3">
+                                <div class="col-8">
+                                    <h2 t-if="doc.invoice_type == 'simplified'">
+                                        Simplified Tax Invoice
+                                        <br/><small style="font-size:14px;">فاتورة ضريبية مبسطة</small>
+                                    </h2>
+                                    <h2 t-else="">
+                                        Tax Invoice
+                                        <br/><small style="font-size:14px;">فاتورة ضريبية</small>
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <strong>Invoice #:</strong> <t t-esc="doc.name"/><br/>
+                                    <strong>Date:</strong> <t t-esc="doc.invoice_date"/>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <!-- Seller / Buyer -->
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <h6>Seller / البائع</h6>
+                                    <strong><t t-esc="doc.seller_name"/></strong><br/>
+                                    VAT: <t t-esc="doc.seller_vat"/><br/>
+                                    <t t-if="doc.seller_cr">CR: <t t-esc="doc.seller_cr"/><br/></t>
+                                    <t t-if="doc.seller_address"><t t-esc="doc.seller_address"/></t>
+                                </div>
+                                <div class="col-6">
+                                    <h6>Buyer / المشتري</h6>
+                                    <strong><t t-esc="doc.buyer_name"/></strong><br/>
+                                    <t t-if="doc.buyer_vat">VAT: <t t-esc="doc.buyer_vat"/><br/></t>
+                                    <t t-if="doc.buyer_address"><t t-esc="doc.buyer_address"/></t>
+                                </div>
+                            </div>
+
+                            <!-- Lines table -->
+                            <table class="table table-sm table-bordered mt-3">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Description / الوصف</th>
+                                        <th class="text-center">Qty</th>
+                                        <th class="text-end">Unit Price</th>
+                                        <th class="text-end">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.line_ids" t-as="line">
+                                        <tr>
+                                            <td><t t-esc="line_index + 1"/></td>
+                                            <td><t t-esc="line.description"/></td>
+                                            <td class="text-center"><t t-esc="line.quantity"/></td>
+                                            <td class="text-end">
+                                                <t t-esc="line.unit_price"
+                                                   t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                            <td class="text-end">
+                                                <t t-esc="line.subtotal"
+                                                   t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+
+                            <!-- Totals + QR -->
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <t t-if="doc.qr_code_image">
+                                        <p><strong>ZATCA QR Code:</strong></p>
+                                        <img t-att-src="'data:image/png;base64,' + doc.qr_code_image.decode('utf-8')"
+                                             style="width:120px;height:120px;"/>
+                                    </t>
+                                </div>
+                                <div class="col-6">
+                                    <table class="table table-sm table-borderless">
+                                        <tr>
+                                            <td><strong>Subtotal (excl. VAT)</strong></td>
+                                            <td class="text-end">
+                                                <t t-esc="doc.amount_untaxed"
+                                                   t-options='{"widget": "float", "precision": 2}'/>
+                                                SAR
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>VAT 15%</strong></td>
+                                            <td class="text-end">
+                                                <t t-esc="doc.amount_vat"
+                                                   t-options='{"widget": "float", "precision": 2}'/>
+                                                SAR
+                                            </td>
+                                        </tr>
+                                        <tr class="fw-bold">
+                                            <td>Total (incl. VAT)</td>
+                                            <td class="text-end">
+                                                <t t-esc="doc.amount_total"
+                                                   t-options='{"widget": "float", "precision": 2}'/>
+                                                SAR
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <t t-if="doc.notes">
+                                <hr/>
+                                <p><strong>Notes:</strong> <t t-esc="doc.notes"/></p>
+                            </t>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sa_invoice,sa.invoice,model_sa_invoice,base.group_user,1,1,1,1
+access_sa_invoice_line,sa.invoice.line,model_sa_invoice_line,base.group_user,1,1,1,1
+access_zatca_config,zatca.config,model_zatca_config,base.group_user,1,1,1,1
