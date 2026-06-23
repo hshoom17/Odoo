@@ -1,0 +1,99 @@
+<odoo>
+    <data>
+
+        <record id="view_sa_payslip_list" model="ir.ui.view">
+            <field name="name">sa.payslip.list</field>
+            <field name="model">sa.payslip</field>
+            <field name="arch" type="xml">
+                <tree decoration-success="state == 'paid'"
+                      decoration-info="state == 'confirmed'"
+                      decoration-muted="state == 'draft'">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="nationality_type"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="gross_salary"/>
+                    <field name="net_salary"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sa_payslip_form" model="ir.ui.view">
+            <field name="name">sa.payslip.form</field>
+            <field name="model">sa.payslip</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" string="Confirm"
+                                type="object" class="btn-primary"
+                                invisible="state != 'draft'"/>
+                        <button name="action_pay" string="Mark as Paid"
+                                type="object" class="btn-success"
+                                invisible="state != 'confirmed'"/>
+                        <button name="action_reset" string="Reset to Draft"
+                                type="object"
+                                invisible="state == 'draft'"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirmed,paid"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group string="Employee">
+                                <field name="employee_id"/>
+                                <field name="nationality_type" readonly="1"/>
+                                <field name="department_id" readonly="1"/>
+                            </group>
+                            <group string="Period">
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Earnings">
+                                <group>
+                                    <field name="basic_salary"/>
+                                    <field name="housing_allowance" readonly="1"/>
+                                    <field name="transport_allowance"/>
+                                    <field name="other_allowances"/>
+                                    <field name="gross_salary" readonly="1"
+                                           class="fw-bold"/>
+                                </group>
+                            </page>
+                            <page string="Deductions">
+                                <group>
+                                    <field name="gosi_employee" readonly="1"/>
+                                    <field name="gosi_employer" readonly="1"
+                                           help="Paid by employer, shown for reference"/>
+                                    <field name="other_deductions"/>
+                                </group>
+                            </page>
+                            <page string="Summary">
+                                <group>
+                                    <field name="gross_salary" readonly="1"/>
+                                    <field name="gosi_employee" readonly="1"/>
+                                    <field name="other_deductions" readonly="1"/>
+                                    <field name="net_salary" readonly="1"
+                                           class="fw-bold text-success"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sa_payslip" model="ir.actions.act_window">
+            <field name="name">Payslips</field>
+            <field name="res_model">sa.payslip</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

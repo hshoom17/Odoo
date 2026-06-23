@@ -8,5 +8,12 @@
             <field name="padding">4</field>
         </record>
 
+        <record id="seq_sa_payslip" model="ir.sequence">
+            <field name="name">Payslip Reference</field>
+            <field name="code">sa.payslip</field>
+            <field name="prefix">PAY</field>
+            <field name="padding">4</field>
+        </record>
+
     </data>
 </odoo>
