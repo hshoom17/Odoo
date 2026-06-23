@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 from datetime import date
 
 
@@ -35,6 +36,28 @@ class SaEmployee(models.Model):
         ('active',   'Active'),
         ('inactive', 'Inactive'),
     ], default='active', required=True)
+
+    _sql_constraints = [
+        ('unique_iqama_number', 'UNIQUE(iqama_number)', 'Iqama number must be unique.'),
+        ('unique_national_id',  'UNIQUE(national_id)',  'National ID must be unique.'),
+    ]
+
+    @api.onchange('nationality_type')
+    def _onchange_nationality_type(self):
+        if self.nationality_type == 'saudi':
+            self.iqama_number = False
+            self.iqama_expiry = False
+        else:
+            self.national_id = False
+
+    @api.constrains('nationality_type', 'iqama_number', 'iqama_expiry')
+    def _check_expat_iqama(self):
+        for emp in self:
+            if emp.nationality_type == 'expat':
+                if not emp.iqama_number:
+                    raise ValidationError('Expat employees must have an Iqama number.')
+                if not emp.iqama_expiry:
+                    raise ValidationError('Expat employees must have an Iqama expiry date.')
 
     @api.depends('iqama_expiry', 'nationality_type')
     def _compute_iqama_status(self):

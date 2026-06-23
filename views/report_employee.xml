@@ -1,0 +1,115 @@
+<odoo>
+    <data>
+
+        <!-- Report action — appears in the Print menu on employee form/list -->
+        <record id="action_report_employee" model="ir.actions.report">
+            <field name="name">Employee Report</field>
+            <field name="model">sa.employee</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">my_first_module.report_employee_document</field>
+            <field name="report_file">my_first_module.report_employee_document</field>
+            <field name="binding_model_id" ref="model_sa_employee"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- QWeb template -->
+        <template id="report_employee_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <h2>
+                                        <t t-esc="doc.name"/>
+                                        <small class="text-muted ms-2" style="font-size:14px;">
+                                            #<t t-esc="doc.employee_number"/>
+                                        </small>
+                                    </h2>
+                                    <h5 class="text-muted">
+                                        <t t-esc="doc.job_title or ''"/>
+                                        <t t-if="doc.department_id">
+                                            — <t t-esc="doc.department_id.name"/>
+                                        </t>
+                                    </h5>
+                                </div>
+                                <div class="col-auto">
+                                    <t t-if="doc.nationality_type == 'saudi'">
+                                        <span class="badge bg-success" style="font-size:13px;">Saudi</span>
+                                    </t>
+                                    <t t-else="">
+                                        <span class="badge bg-info" style="font-size:13px;">Expat</span>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Personal Info</h5>
+                                    <table class="table table-sm table-borderless">
+                                        <tr t-if="doc.nationality_type == 'saudi'">
+                                            <td><strong>National ID</strong></td>
+                                            <td><t t-esc="doc.national_id or '—'"/></td>
+                                        </tr>
+                                        <tr t-if="doc.nationality_type == 'expat'">
+                                            <td><strong>Iqama Number</strong></td>
+                                            <td><t t-esc="doc.iqama_number or '—'"/></td>
+                                        </tr>
+                                        <tr t-if="doc.nationality_type == 'expat'">
+                                            <td><strong>Iqama Expiry</strong></td>
+                                            <td>
+                                                <t t-esc="doc.iqama_expiry"/>
+                                                <t t-if="doc.iqama_status == 'expired'">
+                                                    <span class="badge bg-danger ms-1">Expired</span>
+                                                </t>
+                                                <t t-elif="doc.iqama_status == 'expiring'">
+                                                    <span class="badge bg-warning ms-1">Expiring Soon</span>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-6">
+                                    <h5>Job Info</h5>
+                                    <table class="table table-sm table-borderless">
+                                        <tr>
+                                            <td><strong>Department</strong></td>
+                                            <td><t t-esc="doc.department_id.name or '—'"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Hire Date</strong></td>
+                                            <td><t t-esc="doc.hire_date"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Basic Salary</strong></td>
+                                            <td>
+                                                <t t-esc="doc.salary"/>
+                                                <span class="text-muted"> SAR</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Status</strong></td>
+                                            <td>
+                                                <t t-if="doc.status == 'active'">
+                                                    <span class="badge bg-success">Active</span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span class="badge bg-secondary">Inactive</span>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

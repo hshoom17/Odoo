@@ -59,6 +59,76 @@
             </field>
         </record>
 
+        <record id="view_sa_employee_kanban" model="ir.ui.view">
+            <field name="name">sa.employee.kanban</field>
+            <field name="model">sa.employee</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="status" class="o_kanban_small_column">
+                    <field name="name"/>
+                    <field name="job_title"/>
+                    <field name="department_id"/>
+                    <field name="nationality_type"/>
+                    <field name="iqama_status"/>
+                    <field name="status"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click
+                                #{record.iqama_status.raw_value == 'expired'  ? 'border-danger'  : ''}
+                                #{record.iqama_status.raw_value == 'expiring' ? 'border-warning' : ''}">
+                                <div class="oe_kanban_content p-2">
+                                    <strong class="d-block">
+                                        <field name="name"/>
+                                    </strong>
+                                    <span class="text-muted">
+                                        <field name="job_title"/>
+                                    </span>
+                                    <div class="mt-1">
+                                        <field name="department_id"/>
+                                    </div>
+                                    <div class="mt-2 d-flex justify-content-between align-items-center">
+                                        <span t-if="record.nationality_type.raw_value == 'saudi'"
+                                              class="badge text-bg-success">Saudi</span>
+                                        <span t-else="" class="badge text-bg-info">Expat</span>
+                                        <span t-if="record.iqama_status.raw_value == 'expired'"
+                                              class="badge text-bg-danger">Expired</span>
+                                        <span t-if="record.iqama_status.raw_value == 'expiring'"
+                                              class="badge text-bg-warning">Expiring</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_sa_employee_search" model="ir.ui.view">
+            <field name="name">sa.employee.search</field>
+            <field name="model">sa.employee</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" string="Employee"/>
+                    <field name="job_title"/>
+                    <field name="department_id"/>
+
+                    <filter name="active"   string="Active"          domain="[('status','=','active')]"/>
+                    <filter name="inactive" string="Inactive"        domain="[('status','=','inactive')]"/>
+                    <separator/>
+                    <filter name="saudi"    string="Saudi"           domain="[('nationality_type','=','saudi')]"/>
+                    <filter name="expat"    string="Expat"           domain="[('nationality_type','=','expat')]"/>
+                    <separator/>
+                    <filter name="expired"  string="Expired Iqama"   domain="[('iqama_status','=','expired')]"/>
+                    <filter name="expiring" string="Expiring Soon"   domain="[('iqama_status','=','expiring')]"/>
+
+                    <group expand="0" string="Group By">
+                        <filter name="by_department"   string="Department"   context="{'group_by': 'department_id'}"/>
+                        <filter name="by_nationality"  string="Nationality"  context="{'group_by': 'nationality_type'}"/>
+                        <filter name="by_status"       string="Status"       context="{'group_by': 'status'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
         <record id="action_deactivate_expired_iqama" model="ir.actions.server">
             <field name="name">Deactivate Expired Iqama</field>
             <field name="model_id" ref="model_sa_employee"/>
@@ -71,7 +141,7 @@
         <record id="action_sa_employee" model="ir.actions.act_window">
             <field name="name">Employees</field>
             <field name="res_model">sa.employee</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,kanban,form</field>
         </record>
 
     </data>
