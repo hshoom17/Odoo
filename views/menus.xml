@@ -17,5 +17,11 @@
                   action="action_sa_department"
                   sequence="2"/>
 
+        <menuitem id="menu_sa_hr_payslips"
+                  name="Payslips"
+                  parent="menu_sa_hr_root"
+                  action="action_sa_payslip"
+                  sequence="3"/>
+
     </data>
 </odoo>

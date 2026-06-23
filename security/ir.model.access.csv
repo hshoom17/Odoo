@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_sa_employee,sa.employee,model_sa_employee,base.group_user,1,1,1,1
 access_sa_department,sa.department,model_sa_department,base.group_user,1,1,1,1
 access_iqama_renewal_wizard,iqama.renewal.wizard,model_iqama_renewal_wizard,base.group_user,1,1,1,1
+access_sa_payslip,sa.payslip,model_sa_payslip,base.group_user,1,1,1,1
