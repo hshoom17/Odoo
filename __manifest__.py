@@ -24,6 +24,7 @@
         'views/department_views.xml',
         'views/employee_views.xml',
         'views/report_employee.xml',
+        'views/wizard_iqama_renewal.xml',
         'views/menus.xml',
     ],
     'installable': True,
