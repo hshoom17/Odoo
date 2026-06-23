@@ -1,0 +1,787 @@
+# Arabic translation for SA HR Module
+# Copyright (C) 2026 Hashem Al-Ahdal
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-23 00:00+0000\n"
+"PO-Revision-Date: 2026-06-23 00:00+0000\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: my_first_module
+#: model:ir.model,name:my_first_module.model_sa_employee
+msgid "Employee"
+msgstr "موظف"
+
+#. module: my_first_module
+#: model:ir.model,name:my_first_module.model_sa_department
+msgid "Department"
+msgstr "القسم"
+
+#. module: my_first_module
+#: model:ir.model,name:my_first_module.model_sa_leave
+msgid "Leave Request"
+msgstr "طلب إجازة"
+
+#. module: my_first_module
+#: model:ir.model,name:my_first_module.model_sa_eos
+msgid "End of Service Gratuity"
+msgstr "مكافأة نهاية الخدمة"
+
+#. module: my_first_module
+#: model:ir.model,name:my_first_module.model_eos_calculator_wizard
+msgid "End of Service Calculator"
+msgstr "حاسبة نهاية الخدمة"
+
+#. module: my_first_module
+#: model:ir.model,name:my_first_module.model_sa_payslip
+msgid "Payslip"
+msgstr "كشف الراتب"
+
+#. module: my_first_module
+#: model:ir.model,name:my_first_module.model_iqama_renewal_wizard
+msgid "Iqama Renewal Wizard"
+msgstr "معالج تجديد الإقامة"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__name
+msgid "Full Name"
+msgstr "الاسم الكامل"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__employee_number
+msgid "Employee #"
+msgstr "رقم الموظف"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__nationality_type
+msgid "Nationality"
+msgstr "الجنسية"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__nationality_type__saudi
+msgid "Saudi"
+msgstr "سعودي"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__nationality_type__expat
+msgid "Expat"
+msgstr "وافد"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__national_id
+msgid "National ID"
+msgstr "رقم الهوية الوطنية"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__iqama_number
+msgid "Iqama Number"
+msgstr "رقم الإقامة"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__iqama_expiry
+msgid "Iqama Expiry"
+msgstr "تاريخ انتهاء الإقامة"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__iqama_status
+msgid "Iqama Status"
+msgstr "حالة الإقامة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__iqama_status__valid
+msgid "Valid"
+msgstr "سارية"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__iqama_status__expiring
+msgid "Expiring Soon"
+msgstr "تنتهي قريباً"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__iqama_status__expired
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__passport_status__expired
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__work_permit_status__expired
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__contract_status__expired
+msgid "Expired"
+msgstr "منتهية"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__passport_number
+msgid "Passport Number"
+msgstr "رقم جواز السفر"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__passport_expiry
+msgid "Passport Expiry"
+msgstr "تاريخ انتهاء جواز السفر"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__passport_status
+msgid "Passport Status"
+msgstr "حالة جواز السفر"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__work_permit_number
+msgid "Work Permit Number"
+msgstr "رقم تصريح العمل"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__work_permit_expiry
+msgid "Work Permit Expiry"
+msgstr "تاريخ انتهاء تصريح العمل"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__work_permit_status
+msgid "Work Permit Status"
+msgstr "حالة تصريح العمل"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__contract_type
+msgid "Contract Type"
+msgstr "نوع العقد"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__contract_type__open_ended
+msgid "Open-Ended"
+msgstr "عقد غير محدد المدة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__contract_type__fixed_term
+msgid "Fixed-Term"
+msgstr "عقد محدد المدة"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__contract_start_date
+msgid "Contract Start"
+msgstr "تاريخ بداية العقد"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__contract_end_date
+msgid "Contract End"
+msgstr "تاريخ نهاية العقد"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__contract_status
+msgid "Contract Status"
+msgstr "حالة العقد"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__probation_end_date
+msgid "Probation End"
+msgstr "نهاية فترة التجربة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__probation_status__active
+msgid "In Probation"
+msgstr "في فترة التجربة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__probation_status__ended
+msgid "Probation Ended"
+msgstr "انتهت فترة التجربة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__probation_status__expiring
+msgid "Probation Ending Soon"
+msgstr "فترة التجربة تنتهي قريباً"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__department_id
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__department_id
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__department_id
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__department_id
+msgid "Department"
+msgstr "القسم"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__job_title
+msgid "Job Title"
+msgstr "المسمى الوظيفي"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__hire_date
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__hire_date
+msgid "Hire Date"
+msgstr "تاريخ التعيين"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__salary
+msgid "Basic Salary (SAR)"
+msgstr "الراتب الأساسي (ريال)"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__status__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_employee__status__inactive
+msgid "Inactive"
+msgstr "غير نشط"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__years_of_service
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__years_of_service
+msgid "Years of Service"
+msgstr "سنوات الخدمة"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__annual_leave_entitlement
+msgid "Annual Entitlement (days)"
+msgstr "الاستحقاق السنوي (أيام)"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__annual_leave_taken
+msgid "Annual Leave Taken (this year)"
+msgstr "الإجازات المأخوذة (هذا العام)"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_employee__annual_leave_balance
+msgid "Annual Leave Balance"
+msgstr "رصيد الإجازة السنوية"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_department__saudization_pct
+msgid "Saudization %"
+msgstr "نسبة السعودة %"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_department__total_employees
+msgid "Total Employees"
+msgstr "إجمالي الموظفين"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_department__saudi_count
+msgid "Saudi Count"
+msgstr "عدد السعوديين"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__name
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__name
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__name
+msgid "Reference"
+msgstr "المرجع"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__leave_type
+msgid "Leave Type"
+msgstr "نوع الإجازة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__leave_type__annual
+msgid "Annual Leave"
+msgstr "إجازة سنوية"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__leave_type__hajj
+msgid "Hajj Leave"
+msgstr "إجازة الحج"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__leave_type__sick_full
+msgid "Sick Leave – Full Pay"
+msgstr "إجازة مرضية – براتب كامل"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__leave_type__sick_half
+msgid "Sick Leave – Half Pay"
+msgstr "إجازة مرضية – بنصف الراتب"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__leave_type__sick_unpaid
+msgid "Sick Leave – Unpaid"
+msgstr "إجازة مرضية – بدون راتب"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__leave_type__maternity
+msgid "Maternity Leave"
+msgstr "إجازة الأمومة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__leave_type__paternity
+msgid "Paternity Leave"
+msgstr "إجازة الأبوة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__leave_type__emergency
+msgid "Emergency Leave"
+msgstr "إجازة طارئة"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__date_from
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__date_from
+msgid "From"
+msgstr "من"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__date_to
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__date_to
+msgid "To"
+msgstr "إلى"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__date_from
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__date_to
+msgid "End Date"
+msgstr "تاريخ النهاية"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__days
+msgid "Days"
+msgstr "الأيام"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__state__draft
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_eos__state__draft
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_payslip__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__state__approved
+msgid "Approved"
+msgstr "معتمدة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_leave__state__refused
+msgid "Refused"
+msgstr "مرفوضة"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__notes
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_leave__annual_balance
+msgid "Annual Balance (days)"
+msgstr "الرصيد السنوي (أيام)"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__last_working_day
+msgid "Last Working Day"
+msgstr "آخر يوم عمل"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__termination_reason
+#: model:ir.model.fields,field_description:my_first_module.field_eos_calculator_wizard__termination_reason
+msgid "Reason"
+msgstr "السبب"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_eos__termination_reason__resignation
+msgid "Resignation"
+msgstr "استقالة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_eos__termination_reason__termination
+msgid "Termination by Employer"
+msgstr "إنهاء من قِبَل صاحب العمل"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_eos__termination_reason__mutual
+msgid "Mutual Agreement"
+msgstr "اتفاق مشترك"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_eos__termination_reason__death
+msgid "Death"
+msgstr "وفاة"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_eos__termination_reason__retirement
+msgid "Retirement"
+msgstr "تقاعد"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__basic_salary
+msgid "Last Basic Salary (SAR)"
+msgstr "آخر راتب أساسي (ريال)"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__full_gratuity
+msgid "Full Gratuity (SAR)"
+msgstr "المكافأة الكاملة (ريال)"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__gratuity_factor
+#: model:ir.model.fields,field_description:my_first_module.field_eos_calculator_wizard__gratuity_factor
+msgid "Entitlement Factor"
+msgstr "معامل الاستحقاق"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__gratuity_amount
+#: model:ir.model.fields,field_description:my_first_module.field_eos_calculator_wizard__gratuity_amount
+msgid "Gratuity Due (SAR)"
+msgstr "المكافأة المستحقة (ريال)"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_eos__calculation_notes
+#: model:ir.model.fields,field_description:my_first_module.field_eos_calculator_wizard__calculation_notes
+msgid "Calculation Notes"
+msgstr "ملاحظات الحساب"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_eos__state__paid
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_payslip__state__paid
+msgid "Paid"
+msgstr "مدفوعة"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__housing_allowance
+msgid "Housing Allowance"
+msgstr "بدل السكن"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__transport_allowance
+msgid "Transport Allowance"
+msgstr "بدل المواصلات"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__other_allowances
+msgid "Other Allowances"
+msgstr "بدلات أخرى"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__gross_salary
+msgid "Gross Salary"
+msgstr "الراتب الإجمالي"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__gosi_employee
+msgid "GOSI (Employee)"
+msgstr "التأمينات الاجتماعية (الموظف)"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__gosi_employer
+msgid "GOSI (Employer)"
+msgstr "التأمينات الاجتماعية (صاحب العمل)"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__other_deductions
+msgid "Other Deductions"
+msgstr "خصومات أخرى"
+
+#. module: my_first_module
+#: model:ir.model.fields,field_description:my_first_module.field_sa_payslip__net_salary
+msgid "Net Salary"
+msgstr "صافي الراتب"
+
+#. module: my_first_module
+#: model:ir.model.fields.selection,name:my_first_module.selection__sa_payslip__state__confirmed
+msgid "Confirmed"
+msgstr "مؤكد"
+
+#. module: my_first_module
+#: model:ir.ui.menu,name:my_first_module.menu_sa_hr_root
+msgid "HR"
+msgstr "الموارد البشرية"
+
+#. module: my_first_module
+#: model:ir.ui.menu,name:my_first_module.menu_sa_hr_employees
+#: model:ir.actions.act_window,name:my_first_module.action_sa_employee
+msgid "Employees"
+msgstr "الموظفون"
+
+#. module: my_first_module
+#: model:ir.ui.menu,name:my_first_module.menu_sa_hr_departments
+#: model:ir.actions.act_window,name:my_first_module.action_sa_department
+msgid "Departments"
+msgstr "الأقسام"
+
+#. module: my_first_module
+#: model:ir.ui.menu,name:my_first_module.menu_sa_hr_payslips
+#: model:ir.actions.act_window,name:my_first_module.action_sa_payslip
+msgid "Payslips"
+msgstr "كشوف الرواتب"
+
+#. module: my_first_module
+#: model:ir.ui.menu,name:my_first_module.menu_sa_hr_leaves
+#: model:ir.actions.act_window,name:my_first_module.action_sa_leave
+msgid "Leave Requests"
+msgstr "طلبات الإجازة"
+
+#. module: my_first_module
+#: model:ir.ui.menu,name:my_first_module.menu_sa_hr_eos
+#: model:ir.actions.act_window,name:my_first_module.action_sa_eos
+msgid "End of Service"
+msgstr "نهاية الخدمة"
+
+#. module: my_first_module
+#: model:ir.ui.menu,name:my_first_module.menu_sa_hr_eos_calc
+#: model:ir.actions.act_window,name:my_first_module.action_eos_calculator_wizard
+msgid "EOS Calculator"
+msgstr "حاسبة نهاية الخدمة"
+
+#. module: my_first_module
+#: model:ir.ui.menu,name:my_first_module.menu_sa_hr_doc_expiry
+#: model:ir.actions.act_window,name:my_first_module.action_doc_expiry_dashboard
+msgid "Document Expiry"
+msgstr "انتهاء الوثائق"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Personal &amp; Job"
+msgstr "البيانات الشخصية والوظيفية"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Contract"
+msgstr "العقد"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Documents"
+msgstr "الوثائق"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Leave Balance"
+msgstr "رصيد الإجازة"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Personal Info"
+msgstr "المعلومات الشخصية"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Job Info"
+msgstr "المعلومات الوظيفية"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Probation Period"
+msgstr "فترة التجربة"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Contract Details"
+msgstr "تفاصيل العقد"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Passport"
+msgstr "جواز السفر"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Work Permit"
+msgstr "تصريح العمل"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Annual Leave (Current Year)"
+msgstr "الإجازة السنوية (العام الحالي)"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Activate"
+msgstr "تفعيل"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_employee_form
+msgid "Suspend"
+msgstr "إيقاف"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_leave_form
+msgid "Approve"
+msgstr "اعتماد"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_leave_form
+msgid "Refuse"
+msgstr "رفض"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_leave_form
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_payslip_form
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_eos_form
+msgid "Reset to Draft"
+msgstr "إعادة إلى مسودة"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_leave_form
+msgid "Annual Leave Balance"
+msgstr "رصيد الإجازة السنوية"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_leave_form
+msgid "Remaining Days (this year)"
+msgstr "الأيام المتبقية (هذا العام)"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_eos_form
+msgid "Gratuity Calculation"
+msgstr "حساب المكافأة"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_eos_form
+msgid "Calculation Breakdown"
+msgstr "تفاصيل الحساب"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_eos_form
+msgid "Mark as Paid"
+msgstr "تحديد كمدفوعة"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_payslip_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_payslip_form
+msgid "Earnings"
+msgstr "الإيرادات"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_payslip_form
+msgid "Deductions"
+msgstr "الخصومات"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_payslip_form
+msgid "Summary"
+msgstr "الملخص"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_payslip_form
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_payslip_form
+msgid "Period"
+msgstr "الفترة"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_eos_calculator_wizard
+msgid "Employee Details"
+msgstr "بيانات الموظف"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_eos_calculator_wizard
+msgid "Result"
+msgstr "النتيجة"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_eos_calculator_wizard
+msgid "Breakdown"
+msgstr "التفاصيل"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_eos_calculator_wizard
+msgid "Calculate"
+msgstr "احسب"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_eos_calculator_wizard
+msgid "Save EOS Record"
+msgstr "حفظ سجل نهاية الخدمة"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_eos_calculator_wizard
+msgid "Close"
+msgstr "إغلاق"
+
+#. module: my_first_module
+#: model_terms:ir.ui.view,arch_db:my_first_module.view_sa_department_form
+msgid "Employees"
+msgstr "الموظفون"
+
+#. module: my_first_module
+#: model:ir.actions.server,name:my_first_module.action_deactivate_expired_iqama
+msgid "Deactivate Expired Iqama"
+msgstr "تعطيل الإقامات المنتهية"
+
+#. module: my_first_module
+#: model:ir.actions.act_window,name:my_first_module.action_doc_expiry_dashboard
+msgid "Document Expiry Dashboard"
+msgstr "لوحة انتهاء الوثائق"
+
+#. module: my_first_module
+#: model:ir.actions.act_window,name:my_first_module.action_sa_eos
+msgid "End of Service Records"
+msgstr "سجلات نهاية الخدمة"
+
+#. module: my_first_module
+#: code:addons/my_first_module/models/sa_employee.py:0
+msgid "Iqama number must be unique."
+msgstr "يجب أن يكون رقم الإقامة فريداً."
+
+#. module: my_first_module
+#: code:addons/my_first_module/models/sa_employee.py:0
+msgid "National ID must be unique."
+msgstr "يجب أن يكون رقم الهوية الوطنية فريداً."
+
+#. module: my_first_module
+#: code:addons/my_first_module/models/sa_employee.py:0
+msgid "Expat employees must have an Iqama number."
+msgstr "يجب أن يكون للموظفين الوافدين رقم إقامة."
+
+#. module: my_first_module
+#: code:addons/my_first_module/models/sa_employee.py:0
+msgid "Expat employees must have an Iqama expiry date."
+msgstr "يجب أن يكون للموظفين الوافدين تاريخ انتهاء للإقامة."
+
+#. module: my_first_module
+#: code:addons/my_first_module/models/sa_leave.py:0
+msgid "End date must be on or after start date."
+msgstr "يجب أن يكون تاريخ الانتهاء في نفس تاريخ البداية أو بعده."
+
+#. module: my_first_module
+#: code:addons/my_first_module/models/sa_leave.py:0
+msgid "Hajj leave has already been taken by this employee. It is granted only once per career."
+msgstr "سبق للموظف الحصول على إجازة الحج. تُمنح مرة واحدة فقط طوال مسيرته المهنية."
+
+#. module: my_first_module
+#: code:addons/my_first_module/models/sa_leave.py:0
+msgid "Hajj leave cannot exceed 10 days."
+msgstr "لا يمكن أن تتجاوز إجازة الحج 10 أيام."
+
+#. module: my_first_module
+#: code:addons/my_first_module/wizards/eos_calculator.py:0
+msgid "Employee has no hire date set."
+msgstr "لم يتم تحديد تاريخ تعيين الموظف."
+
+#. module: my_first_module
+#: code:addons/my_first_module/wizards/eos_calculator.py:0
+msgid "Employee has no basic salary set."
+msgstr "لم يتم تحديد الراتب الأساسي للموظف."
+
+#. module: my_first_module
+#: code:addons/my_first_module/wizards/eos_calculator.py:0
+msgid "Last working day cannot be before hire date."
+msgstr "لا يمكن أن يكون آخر يوم عمل قبل تاريخ التعيين."
+
+#. module: my_first_module
+#: code:addons/my_first_module/wizards/eos_calculator.py:0
+msgid "Please calculate first."
+msgstr "يرجى الحساب أولاً."
+
+#. module: my_first_module
+#: code:addons/my_first_module/wizards/iqama_renewal.py:0
+msgid "Please select at least one expat employee."
+msgstr "يرجى تحديد موظف وافد واحد على الأقل."
+
+#. module: my_first_module
+#: model:ir.module.module,shortdesc:my_first_module.module_my_first_module
+msgid "SA HR Module"
+msgstr "نظام الموارد البشرية السعودي"
+
+#. module: my_first_module
+#: model:ir.module.module,summary:my_first_module.module_my_first_module
+msgid "Saudi Arabia HR management with Saudization (Nitaqat) tracking"
+msgstr "إدارة الموارد البشرية في المملكة العربية السعودية مع تتبع السعودة (نطاقات)"
