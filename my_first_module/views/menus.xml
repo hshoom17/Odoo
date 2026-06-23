@@ -23,5 +23,29 @@
                   action="action_sa_payslip"
                   sequence="3"/>
 
+        <menuitem id="menu_sa_hr_leaves"
+                  name="Leave Requests"
+                  parent="menu_sa_hr_root"
+                  action="action_sa_leave"
+                  sequence="4"/>
+
+        <menuitem id="menu_sa_hr_eos"
+                  name="End of Service"
+                  parent="menu_sa_hr_root"
+                  action="action_sa_eos"
+                  sequence="5"/>
+
+        <menuitem id="menu_sa_hr_eos_calc"
+                  name="EOS Calculator"
+                  parent="menu_sa_hr_root"
+                  action="action_eos_calculator_wizard"
+                  sequence="6"/>
+
+        <menuitem id="menu_sa_hr_doc_expiry"
+                  name="Document Expiry"
+                  parent="menu_sa_hr_root"
+                  action="action_doc_expiry_dashboard"
+                  sequence="7"/>
+
     </data>
 </odoo>

@@ -39,21 +39,75 @@
                             <h1><field name="name" placeholder="Employee Name"/></h1>
                             <h2><field name="employee_number" readonly="1"/></h2>
                         </div>
-                        <group>
-                            <group string="Personal Info">
-                                <field name="nationality_type"/>
-                                <field name="national_id"  invisible="nationality_type != 'saudi'"/>
-                                <field name="iqama_number" invisible="nationality_type != 'expat'"/>
-                                <field name="iqama_expiry" invisible="nationality_type != 'expat'"/>
-                                <field name="iqama_status" invisible="nationality_type != 'expat'" readonly="1"/>
-                            </group>
-                            <group string="Job Info">
-                                <field name="department_id"/>
-                                <field name="job_title"/>
-                                <field name="hire_date"/>
-                                <field name="salary"/>
-                            </group>
-                        </group>
+                        <notebook>
+                            <!-- ── Tab 1: Personal & Job ───────────────────── -->
+                            <page string="Personal &amp; Job">
+                                <group>
+                                    <group string="Personal Info">
+                                        <field name="nationality_type"/>
+                                        <field name="national_id"  invisible="nationality_type != 'saudi'"/>
+                                        <field name="iqama_number" invisible="nationality_type != 'expat'"/>
+                                        <field name="iqama_expiry" invisible="nationality_type != 'expat'"/>
+                                        <field name="iqama_status" invisible="nationality_type != 'expat'" readonly="1"/>
+                                    </group>
+                                    <group string="Job Info">
+                                        <field name="department_id"/>
+                                        <field name="job_title"/>
+                                        <field name="hire_date"/>
+                                        <field name="salary"/>
+                                        <field name="years_of_service" readonly="1"/>
+                                    </group>
+                                </group>
+                                <!-- Probation alert -->
+                                <group string="Probation Period">
+                                    <group>
+                                        <field name="probation_end_date"/>
+                                        <field name="probation_status" readonly="1"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <!-- ── Tab 2: Contract ────────────────────────── -->
+                            <page string="Contract">
+                                <group>
+                                    <group string="Contract Details">
+                                        <field name="contract_type"/>
+                                        <field name="contract_start_date"/>
+                                        <field name="contract_end_date"
+                                               invisible="contract_type != 'fixed_term'"/>
+                                        <field name="contract_status" readonly="1"
+                                               invisible="contract_type != 'fixed_term'"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <!-- ── Tab 3: Documents ───────────────────────── -->
+                            <page string="Documents">
+                                <group>
+                                    <group string="Passport">
+                                        <field name="passport_number"/>
+                                        <field name="passport_expiry"/>
+                                        <field name="passport_status" readonly="1"/>
+                                    </group>
+                                    <group string="Work Permit" invisible="nationality_type != 'expat'">
+                                        <field name="work_permit_number"/>
+                                        <field name="work_permit_expiry"/>
+                                        <field name="work_permit_status" readonly="1"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <!-- ── Tab 4: Leave Balance ───────────────────── -->
+                            <page string="Leave Balance">
+                                <group>
+                                    <group string="Annual Leave (Current Year)">
+                                        <field name="annual_leave_entitlement" readonly="1"/>
+                                        <field name="annual_leave_taken" readonly="1"/>
+                                        <field name="annual_leave_balance" readonly="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -142,6 +196,46 @@
             <field name="name">Employees</field>
             <field name="res_model">sa.employee</field>
             <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+        <!-- ── Document Expiry Dashboard ──────────────────────────────────── -->
+        <record id="view_sa_employee_doc_expiry_list" model="ir.ui.view">
+            <field name="name">sa.employee.doc_expiry.list</field>
+            <field name="model">sa.employee</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="iqama_status == 'expired' or passport_status == 'expired' or work_permit_status == 'expired' or contract_status == 'expired'"
+                      decoration-warning="iqama_status == 'expiring' or passport_status == 'expiring' or work_permit_status == 'expiring' or contract_status == 'expiring' or probation_status == 'expiring'">
+                    <field name="name"/>
+                    <field name="nationality_type"/>
+                    <field name="department_id"/>
+                    <field name="iqama_expiry" optional="show"/>
+                    <field name="iqama_status" optional="show"/>
+                    <field name="passport_expiry" optional="show"/>
+                    <field name="passport_status" optional="show"/>
+                    <field name="work_permit_expiry" optional="show"/>
+                    <field name="work_permit_status" optional="show"/>
+                    <field name="contract_end_date" optional="show"/>
+                    <field name="contract_status" optional="show"/>
+                    <field name="probation_end_date" optional="show"/>
+                    <field name="probation_status" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_doc_expiry_dashboard" model="ir.actions.act_window">
+            <field name="name">Document Expiry Dashboard</field>
+            <field name="res_model">sa.employee</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_sa_employee_doc_expiry_list"/>
+            <field name="domain">[
+                '|', '|', '|', '|',
+                ('iqama_status', 'in', ['expiring', 'expired']),
+                ('passport_status', 'in', ['expiring', 'expired']),
+                ('work_permit_status', 'in', ['expiring', 'expired']),
+                ('contract_status', 'in', ['expiring', 'expired']),
+                ('probation_status', '=', 'expiring')
+            ]</field>
+            <field name="context">{'search_default_status': 'active'}</field>
         </record>
 
     </data>

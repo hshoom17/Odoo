@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ── List view ──────────────────────────────────────────────────── -->
+        <record id="view_sa_leave_list" model="ir.ui.view">
+            <field name="name">sa.leave.list</field>
+            <field name="model">sa.leave</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'draft'"
+                      decoration-success="state == 'approved'"
+                      decoration-danger="state == 'refused'">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="leave_type"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="days"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- ── Form view ──────────────────────────────────────────────────── -->
+        <record id="view_sa_leave_form" model="ir.ui.view">
+            <field name="name">sa.leave.form</field>
+            <field name="model">sa.leave</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_approve" string="Approve"
+                                type="object" class="btn-success"
+                                invisible="state != 'draft'"/>
+                        <button name="action_refuse" string="Refuse"
+                                type="object" class="btn-danger"
+                                invisible="state != 'draft'"/>
+                        <button name="action_reset" string="Reset to Draft"
+                                type="object"
+                                invisible="state == 'draft'"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,approved,refused"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group string="Employee">
+                                <field name="employee_id"/>
+                                <field name="department_id" readonly="1"/>
+                            </group>
+                            <group string="Leave Details">
+                                <field name="leave_type"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="days" readonly="1"/>
+                            </group>
+                        </group>
+                        <!-- Annual leave balance info banner -->
+                        <group invisible="leave_type != 'annual'">
+                            <group string="Annual Leave Balance">
+                                <field name="annual_balance" readonly="1"
+                                       string="Remaining Days (this year)"/>
+                            </group>
+                        </group>
+                        <group string="Notes">
+                            <field name="notes" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ── Search view ────────────────────────────────────────────────── -->
+        <record id="view_sa_leave_search" model="ir.ui.view">
+            <field name="name">sa.leave.search</field>
+            <field name="model">sa.leave</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <filter name="draft"    string="Draft"    domain="[('state','=','draft')]"/>
+                    <filter name="approved" string="Approved" domain="[('state','=','approved')]"/>
+                    <filter name="refused"  string="Refused"  domain="[('state','=','refused')]"/>
+                    <separator/>
+                    <filter name="annual"      string="Annual"      domain="[('leave_type','=','annual')]"/>
+                    <filter name="hajj"        string="Hajj"        domain="[('leave_type','=','hajj')]"/>
+                    <filter name="sick"        string="Sick"
+                            domain="[('leave_type','in',['sick_full','sick_half','sick_unpaid'])]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="by_employee"   string="Employee"   context="{'group_by': 'employee_id'}"/>
+                        <filter name="by_department" string="Department" context="{'group_by': 'department_id'}"/>
+                        <filter name="by_type"       string="Leave Type" context="{'group_by': 'leave_type'}"/>
+                        <filter name="by_state"      string="Status"     context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- ── Action ─────────────────────────────────────────────────────── -->
+        <record id="action_sa_leave" model="ir.actions.act_window">
+            <field name="name">Leave Requests</field>
+            <field name="res_model">sa.leave</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

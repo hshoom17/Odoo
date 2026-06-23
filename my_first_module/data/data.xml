@@ -15,5 +15,19 @@
             <field name="padding">4</field>
         </record>
 
+        <record id="seq_sa_leave" model="ir.sequence">
+            <field name="name">Leave Request</field>
+            <field name="code">sa.leave</field>
+            <field name="prefix">LV</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_sa_eos" model="ir.sequence">
+            <field name="name">End of Service</field>
+            <field name="code">sa.eos</field>
+            <field name="prefix">EOS</field>
+            <field name="padding">4</field>
+        </record>
+
     </data>
 </odoo>

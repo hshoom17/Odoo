@@ -3,3 +3,6 @@ access_sa_employee,sa.employee,model_sa_employee,base.group_user,1,1,1,1
 access_sa_department,sa.department,model_sa_department,base.group_user,1,1,1,1
 access_iqama_renewal_wizard,iqama.renewal.wizard,model_iqama_renewal_wizard,base.group_user,1,1,1,1
 access_sa_payslip,sa.payslip,model_sa_payslip,base.group_user,1,1,1,1
+access_sa_leave,sa.leave,model_sa_leave,base.group_user,1,1,1,1
+access_sa_eos,sa.eos,model_sa_eos,base.group_user,1,1,1,1
+access_eos_calculator_wizard,eos.calculator.wizard,model_eos_calculator_wizard,base.group_user,1,1,1,1
